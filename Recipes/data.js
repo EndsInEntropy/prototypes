@@ -298,11 +298,42 @@ const RECIPES = [
     emoji: '🍝',
     source: 'https://rainbowplantlife.com/wprm_print/lentil-bolognese',
     sourceName: 'Rainbow Plant Life',
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 10 min · Cook 45 min',
+    servings: 'Serves 6',
+    note: 'Use tomato paste from a tube, not the canned kind, for best results. No good balsamic on hand? Leave it out or use 1–2 tsp sugar instead.',
+    ingredients: [
+      { heading: '', items: [
+        '1½ tbsp olive oil',
+        '1 large onion, diced',
+        '4 garlic cloves, minced',
+        '1 tsp dried oregano',
+        '1 tsp dried thyme (or use more oregano)',
+        '1½ tsp kosher salt, plus more to taste',
+        'Freshly ground black pepper, to taste',
+        '1 tube (5.3oz/150g) tomato paste',
+        '½ cup (120ml) dry red wine (optional)',
+        '3 cups (720ml) vegetable broth',
+        '1 cup (185g) red lentils, soaked (see step 1)',
+        '¼ cup (32g) walnuts or pecans, finely crushed',
+        '1 can (14.5oz/410g) crushed tomatoes, or whole peeled tomatoes crushed by hand',
+        '12–16oz (340–454g) long, wide pasta (tagliatelle, pappardelle, fettuccine) or tubes (rigatoni, penne) or gnocchi',
+        '1 tbsp high-quality balsamic vinegar',
+        'Flat-leaf parsley or basil, chopped, to garnish (optional)'
+      ]}
+    ],
+    method: [
+      'Soak the lentils in water for 30–60 minutes. Meanwhile prep the other ingredients — chop the onion, garlic and walnuts.',
+      'Heat a 12-inch deep sauté pan or Dutch oven over medium-high heat. Add the olive oil, then the onion with a pinch of salt. Cook, stirring occasionally, until a light brown fond forms on the pan, about 5 minutes. Deglaze with a few spoons of water and continue cooking, adding a splash of water every few minutes to prevent burning, until softened and golden brown, 9–10 minutes.',
+      'Add the garlic, thyme, oregano, 1½ tsp salt and pepper to taste. Stir frequently and cook 60–90 seconds.',
+      'Stir in the tomato paste and cook 2–3 minutes, stirring very frequently, until it darkens in colour.',
+      'Optional: add the red wine and deglaze, scraping up the browned bits. Cook 1–2 minutes until the alcohol smell has burned off and the mixture is jammy.',
+      'Pour in the broth, stirring the browned bits and tomato paste together. Add the lentils and walnuts and stir in. Bring to a boil, then reduce to medium-low and simmer rapidly for 20 minutes, stirring occasionally.',
+      'Add the crushed tomatoes and simmer another 15–20 minutes, until the lentils are tender but still al dente, stirring occasionally to prevent sticking — add a little water or lower the heat if needed.',
+      'Meanwhile, boil a large pot of well-salted water, cook the pasta until just al dente, reserve a ladle of pasta water, then drain (don’t rinse).',
+      'Taste the bolognese and adjust salt and pepper, then stir in the balsamic vinegar to finish.',
+      'Add the hot pasta to the bolognese and toss to coat, loosening with a splash of pasta water if needed. Garnish with parsley or basil.'
+    ],
+    status: 'ready'
   },
   {
     id: 'chickpea-meatballs',
