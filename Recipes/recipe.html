@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#faf5eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title id="pageTitle">Recipe · Recipe Box</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="pagehead">
+    <a class="backbtn" href="index.html" aria-label="Back">←</a>
+    <h1 id="titleView">Recipe</h1>
+    <button class="iconbtn" id="editBtn" aria-label="Edit" onclick="openEdit()">✎</button>
+  </div>
+
+  <!-- ============ VIEW MODE ============ -->
+  <div id="viewMode">
+    <div class="meta-row" id="metaRow"></div>
+    <a id="sourceLink" class="source-link" target="_blank" rel="noopener">View original recipe ↗</a>
+    <div id="noteBox"></div>
+
+    <div id="companionBox"></div>
+
+    <div id="emptyState"></div>
+
+    <div id="ingredientsBlock" style="display:none">
+      <div class="section-title">Ingredients</div>
+      <div id="ingredientsOut"></div>
+    </div>
+
+    <div id="methodBlock" style="display:none">
+      <div class="section-title">Method</div>
+      <div id="methodOut"></div>
+    </div>
+  </div>
+
+  <!-- ============ EDIT MODE ============ -->
+  <div id="editMode" style="display:none">
+    <div class="field">
+      <label>Title</label>
+      <input type="text" id="fTitle" placeholder="Recipe name">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Category</label>
+        <select id="fCategory">
+          <option>Mains</option>
+          <option>Bakery</option>
+          <option>Snacks & Dips</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Emoji</label>
+        <input type="text" id="fEmoji" placeholder="🍽️" maxlength="4">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Time</label>
+        <input type="text" id="fTime" placeholder="e.g. 40 min">
+      </div>
+      <div class="field">
+        <label>Servings</label>
+        <input type="text" id="fServings" placeholder="e.g. Serves 4">
+      </div>
+    </div>
+    <div class="field">
+      <label>Source link (optional)</label>
+      <input type="text" id="fSource" placeholder="https://…">
+    </div>
+    <div class="field">
+      <label>Ingredients</label>
+      <textarea id="fIngredients" placeholder="One per line, e.g.&#10;200g chickpeas&#10;1 tbsp olive oil"></textarea>
+      <div class="help">One ingredient per line. For multi-part recipes, start a section with a line like <code>## For the sauce</code>.</div>
+    </div>
+    <div class="field">
+      <label>Method</label>
+      <textarea id="fMethod" placeholder="One step per line" style="min-height:180px"></textarea>
+      <div class="help">One step per line — numbered automatically. Use <code>## Heading</code> to start a new section.</div>
+    </div>
+
+    <button class="btn btn-primary btn-block" onclick="saveEdit()">Save recipe</button>
+    <div class="actions-row">
+      <button class="btn btn-outline btn-block" onclick="cancelEdit()">Cancel</button>
+      <button class="btn btn-outline btn-danger btn-block" id="deleteBtn" style="display:none" onclick="deleteRecipe()">Delete</button>
+    </div>
+  </div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  let recipeId = params.get('id');
+  const isNew = params.get('new') === '1';
+
+  function init(){
+    if(isNew){ openEdit(true); return; }
+    const r = resolvedRecipe(recipeId);
+    if(!r){ document.getElementById('viewMode').innerHTML = '<div class="empty-state">Recipe not found.</div>'; return; }
+    renderView(r);
+  }
+
+  function renderView(r){
+    document.title = r.title + ' · Recipe Box';
+    document.getElementById('titleView').textContent = r.emoji ? r.emoji + '  ' + r.title : r.title;
+
+    const meta = [];
+    if(r.time) meta.push(`<span class="pill">⏱ ${escapeHtml(r.time)}</span>`);
+    if(r.servings) meta.push(`<span class="pill">🍽 ${escapeHtml(r.servings)}</span>`);
+    meta.push(`<span class="pill">${escapeHtml(r.category||'')}</span>`);
+    document.getElementById('metaRow').innerHTML = meta.join('');
+
+    const src = document.getElementById('sourceLink');
+    if(r.source){ src.href = r.source; src.textContent = 'View original' + (r.sourceName ? ' · ' + r.sourceName : '') + ' ↗'; }
+    else { src.style.display = 'none'; }
+
+    document.getElementById('noteBox').innerHTML = r.note ? `<div class="note">${escapeHtml(r.note)}</div>` : '';
+    document.getElementById('companionBox').innerHTML = r.companionApp
+      ? `<a class="btn btn-outline btn-block" href="${r.companionApp}">Open bake-day companion app →</a>` : '';
+
+    if(r.status !== 'ready'){
+      document.getElementById('emptyState').innerHTML = `
+        <div class="empty-state">
+          <span class="big">📝</span>
+          No method saved here yet.<br>Tap the pencil above to paste it in.
+        </div>`;
+      document.getElementById('ingredientsBlock').style.display = 'none';
+      document.getElementById('methodBlock').style.display = 'none';
+      return;
+    }
+    document.getElementById('emptyState').innerHTML = '';
+    if(hasAnyContent(r.ingredients)){
+      document.getElementById('ingredientsBlock').style.display = '';
+      renderIngredients(r.ingredients, 'ingredientsOut', r.id);
+    }
+    if(hasAnyContent(r.method)){
+      document.getElementById('methodBlock').style.display = '';
+      renderMethod(r.method, 'methodOut');
+    }
+  }
+
+  function openEdit(forceNew){
+    document.getElementById('viewMode').style.display = 'none';
+    document.getElementById('editMode').style.display = '';
+    document.getElementById('editBtn').style.display = 'none';
+
+    if(forceNew || isNew){
+      document.getElementById('titleView').textContent = 'New recipe';
+      document.getElementById('fTitle').value = '';
+      document.getElementById('fCategory').value = 'Mains';
+      document.getElementById('fEmoji').value = '🍽️';
+      document.getElementById('fTime').value = '';
+      document.getElementById('fServings').value = '';
+      document.getElementById('fSource').value = '';
+      document.getElementById('fIngredients').value = '';
+      document.getElementById('fMethod').value = '';
+      document.getElementById('deleteBtn').style.display = 'none';
+      return;
+    }
+
+    const base = findRecipe(recipeId);
+    const r = resolvedRecipe(recipeId);
+    document.getElementById('fTitle').value = base.title;
+    document.getElementById('fCategory').value = base.category;
+    document.getElementById('fEmoji').value = base.emoji || '';
+    document.getElementById('fTime').value = r.time || '';
+    document.getElementById('fServings').value = r.servings || '';
+    document.getElementById('fSource').value = base.source || '';
+    document.getElementById('fIngredients').value = toEditText(r.ingredients);
+    document.getElementById('fMethod').value = toEditText(r.method);
+
+    const isCustom = loadCustom().some(x => x.id === recipeId);
+    document.getElementById('deleteBtn').style.display = isCustom ? '' : 'none';
+  }
+
+  function cancelEdit(){
+    if(isNew){ location.href = 'index.html'; return; }
+    document.getElementById('viewMode').style.display = '';
+    document.getElementById('editMode').style.display = 'none';
+    document.getElementById('editBtn').style.display = '';
+  }
+
+  function saveEdit(){
+    const title = document.getElementById('fTitle').value.trim();
+    if(!title){ alert('Give the recipe a title first.'); return; }
+    const ingredients = fromEditText(document.getElementById('fIngredients').value, 'items');
+    const method = fromEditText(document.getElementById('fMethod').value, 'steps');
+    const time = document.getElementById('fTime').value.trim();
+    const servings = document.getElementById('fServings').value.trim();
+
+    if(isNew || !findRecipe(recipeId)){
+      const id = slugify(title);
+      const custom = loadCustom();
+      custom.push({
+        id, title,
+        category: document.getElementById('fCategory').value,
+        emoji: document.getElementById('fEmoji').value.trim() || '🍽️',
+        source: document.getElementById('fSource').value.trim(),
+        sourceName: '',
+        time, servings,
+        ingredients, method,
+        status: 'ready'
+      });
+      saveCustom(custom);
+      location.href = 'recipe.html?id=' + encodeURIComponent(id);
+      return;
+    }
+
+    saveOverride(recipeId, { ingredients, method, time, servings });
+
+    const isCustom = loadCustom().some(x => x.id === recipeId);
+    if(isCustom){
+      const custom = loadCustom().map(x => x.id === recipeId ? Object.assign({}, x, {
+        title, category: document.getElementById('fCategory').value,
+        emoji: document.getElementById('fEmoji').value.trim() || '🍽️',
+        source: document.getElementById('fSource').value.trim()
+      }) : x);
+      saveCustom(custom);
+    }
+
+    location.reload();
+  }
+
+  function deleteRecipe(){
+    if(!confirm('Delete this recipe?')) return;
+    saveCustom(loadCustom().filter(x => x.id !== recipeId));
+    clearOverride(recipeId);
+    location.href = 'index.html';
+  }
+
+  init();
+</script>
+</body>
+</html>

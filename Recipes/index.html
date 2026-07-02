@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#faf5eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Recipe Box">
+<title>Recipe Box</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="eyebrow">Your saved recipes</div>
+  <div class="pagehead">
+    <h1>Recipe Box</h1>
+  </div>
+
+  <div class="search">
+    <span>🔍</span>
+    <input type="text" id="searchInput" placeholder="Search recipes…" oninput="render()">
+  </div>
+
+  <div id="lists"></div>
+
+  <footer class="hint">Tap a recipe to see the method. Tap the pencil on any recipe to add or edit it yourself.</footer>
+
+  <a class="fab" href="recipe.html?new=1" aria-label="Add recipe">+</a>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  function render(){
+    const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    const recipes = allRecipes()
+      .map(r => resolvedRecipe(r.id))
+      .filter(r => !q || r.title.toLowerCase().includes(q) || (r.category||'').toLowerCase().includes(q));
+
+    const cats = {};
+    recipes.forEach(r => { (cats[r.category] = cats[r.category] || []).push(r); });
+    const order = ['Mains','Bakery','Snacks & Dips'];
+    const catNames = Object.keys(cats).sort((a,b) => {
+      const ia = order.indexOf(a), ib = order.indexOf(b);
+      return (ia===-1?99:ia) - (ib===-1?99:ib);
+    });
+
+    const wrap = document.getElementById('lists');
+    if(!recipes.length){
+      wrap.innerHTML = '<div class="empty-search">No recipes match your search.</div>';
+      return;
+    }
+    wrap.innerHTML = catNames.map(cat => `
+      <div class="category">
+        <h2>${cat}</h2>
+        <div class="grid">
+          ${cats[cat].map(tileHtml).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function tileHtml(r){
+    return `
+      <a class="tile ${r.status==='ready'?'ready':''}" href="recipe.html?id=${encodeURIComponent(r.id)}">
+        <span class="badge"></span>
+        <span class="emoji">${r.emoji||'🍽️'}</span>
+        <span class="name">${escapeHtml(r.title)}</span>
+        <span class="src">${escapeHtml(r.sourceName||'')}</span>
+      </a>`;
+  }
+
+  render();
+</script>
+</body>
+</html>

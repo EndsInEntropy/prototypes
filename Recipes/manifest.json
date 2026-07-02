@@ -1,0 +1,19 @@
+{
+  "name": "Recipe Box",
+  "short_name": "Recipe Box",
+  "description": "Saved recipes with ingredients and method, organised and ready to cook offline",
+  "start_url": "/prototypes/Recipes/",
+  "scope": "/prototypes/Recipes/",
+  "display": "standalone",
+  "background_color": "#faf5eb",
+  "theme_color": "#faf5eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
