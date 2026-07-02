@@ -342,11 +342,31 @@ const RECIPES = [
     emoji: '🍡',
     source: 'https://dishingouthealth.com/wprm_print/10105/',
     sourceName: 'Dishing Out Health',
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 10 min · Cook 10 min',
+    servings: 'Serves 4 (14 meatballs)',
+    note: 'Store: cool fully, then refrigerate airtight up to 4 days. Freeze up to 3 months in an airtight bag; thaw overnight before reheating. Reheat in the oven/toaster oven at 325°F for 10–15 min for the crispest result. Can also bake (375°F, 18–20 min, flipping at 10 min) or air-fry (375°F, 11–14 min in a single layer, in batches) instead of pan-frying.',
+    ingredients: [
+      { heading: '', items: [
+        '1 can (15oz) chickpeas, drained, rinsed and patted dry',
+        '½ cup plain breadcrumbs (sub almond meal or ground oats for gluten-free)',
+        '2 large eggs (sub flax eggs for vegan)',
+        '¼ cup fresh parsley leaves',
+        '2 tbsp nutritional yeast or grated Parmesan cheese',
+        '2 tsp Italian seasoning',
+        '1 tsp black pepper',
+        '1 tsp garlic powder',
+        '¾ tsp smoked paprika',
+        '¾ tsp kosher salt',
+        '2 tbsp extra-virgin olive oil'
+      ]}
+    ],
+    method: [
+      'Combine everything except the olive oil (chickpeas through salt) in a food processor. Blend until the mixture is cohesive and mostly smooth.',
+      'Using a small cookie dough scoop or tablespoon, gather heaping tablespoon amounts and roll into balls — you should get about 14 golfball-sized meatballs. If the mixture feels too wet to form, add 1–2 more tbsp breadcrumbs.',
+      'Heat the olive oil in a large skillet over medium heat. Once hot, add the meatballs and cook 6–8 minutes, turning to brown all sides, until golden.',
+      'Serve with pasta and sauce, in a sandwich or pita, over a salad, or with your favourite dipping sauce.'
+    ],
+    status: 'ready'
   },
   {
     id: 'wholewheat-wraps',
