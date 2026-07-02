@@ -82,11 +82,41 @@ const RECIPES = [
     emoji: '🧆',
     source: 'https://www.loveandlemons.com/wprm_print/42582',
     sourceName: 'Love and Lemons',
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 15 min · Cook 25 min · Soak chickpeas 24 hr',
+    servings: 'Serves 4 (12–15 falafel)',
+    note: 'Use dried chickpeas soaked 24 hours, not canned — canned chickpeas will make the falafel mushy.',
+    ingredients: [
+      { heading: '', items: [
+        '1 cup uncooked chickpeas, soaked 24 hours, drained, rinsed and patted dry',
+        '½ cup chopped shallot or yellow onion',
+        '3 garlic cloves',
+        '1 tsp lemon zest',
+        '1 tsp ground cumin',
+        '1 tsp ground coriander',
+        '¾ tsp sea salt',
+        '¼ tsp cayenne pepper',
+        '¼ tsp baking powder',
+        '1 cup chopped fresh cilantro leaves and stems, patted dry',
+        '1 cup chopped fresh parsley leaves and stems, patted dry',
+        '1 tbsp extra-virgin olive oil, plus more for drizzling'
+      ]},
+      { heading: 'For serving', items: [
+        'Pita bread (use gluten-free pita if needed)',
+        'Hummus',
+        'Diced veggies — tomato, cucumber',
+        'Fresh herbs — chopped parsley, fresh mint',
+        'Pickled red onions',
+        'Tahini sauce'
+      ]}
+    ],
+    method: [
+      'Preheat the oven to 400°F (200°C) and line a large baking sheet with parchment paper.',
+      'In a food processor, combine the chickpeas (use all of them — they expand during soaking), shallot, garlic, lemon zest, cumin, coriander, salt, cayenne, baking powder, cilantro, parsley and olive oil. Pulse until well combined but not puréed, scraping down the sides as needed.',
+      'Using a 2-tablespoon scoop and your hands, form the mixture into 12–15 thick patties — don’t pack them too tight or the falafel will be dense. If they won’t hold together, pulse the mixture a few more times.',
+      'Place the patties on the baking sheet and drizzle generously with olive oil (key to moist, crisp falafel without frying). Bake for 14 minutes, then flip and bake 10–12 minutes more until golden brown and crisp. During the last few minutes, wrap the pita in foil and warm it in the oven.',
+      'Assemble pitas with hummus, diced veggies, falafel, herbs, pickled red onions and a generous drizzle of tahini sauce.'
+    ],
+    status: 'ready'
   },
   {
     id: 'harissa-tofu-flatbreads',
