@@ -455,15 +455,33 @@ const RECIPES = [
   },
   {
     id: 'baguettes',
-    title: 'Baguettes',
+    title: 'French Baguettes',
     category: 'Bakery',
     emoji: '🥖',
     source: 'https://lechefswife.com/baking-baguettes-for-beginners/',
     sourceName: "Le Chef's Wife",
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 2¼ hr · Cook 30 min',
+    servings: 'Makes 2 baguettes',
+    note: 'Oven temperatures vary a lot — watch closely after 18 minutes. You want a deep golden crust, not too dark; if it browns too fast, drop the rack a notch and take the baguettes out a little earlier. Don’t turn the heat down too much though — the high heat is what makes the crust crackly.',
+    ingredients: [
+      { heading: '', items: [
+        '8g traditional yeast (or 2 tsp)',
+        '1 tbsp honey',
+        '1¼ cups warm water (not hot — just enough to wake the yeast)',
+        '1 tbsp fleur de sel (or 1 tsp if using table salt)',
+        '2½ cups bread flour (all-purpose also works)'
+      ]}
+    ],
+    method: [
+      'Proof the yeast: put the warm water in a big mixing bowl, add the yeast and honey, stir briefly, then let sit on the counter for 10 minutes until the yeast wakes up and rises to the surface.',
+      'Add the salt, then slowly add the flour until a shaggy dough forms — start with a spatula, then bring it together with your hands into a rough ball. Don’t overwork it; no stand mixer needed.',
+      'Dust the top with a little flour, cover with a towel, and set somewhere warm (near a fridge or dryer motor works well). Let rise until doubled in size, about 1 hour, then divide the dough in two.',
+      'Shape each half into a baguette: knead gently until firmer, folding the dough over itself (adding a touch more flour if sticky). Flatten into a rectangle, fold the top down about ¾ of the way like an envelope and press the seam. Roll the folded top down into a mini oblong, press the seam again and flip seam-side down. Then, with fingers spread on both hands, gently roll it back and forth to elongate into a baguette shape about 12 inches long.',
+      'Place the shaped baguettes on a floured cookie sheet or baguette pan. Score the tops with a razor, sharp knife tip, or kitchen scissors.',
+      'Sprinkle a little more flour and fleur de sel over the top, then let rise uncovered for 30 minutes while the oven preheats.',
+      'Heat the oven to 460°F. Once hot, fill a 9-inch pan halfway with water and place it on the bottom rack — this creates the steam that gives the crackly crust.',
+      'Bake for 25 minutes, watching closely after 18 — they’re done when dark golden brown and hollow-sounding when tapped. Carefully remove the water pan and bake about 5 minutes more until deeply golden and hollow-sounding.'
+    ],
+    status: 'ready'
   }
 ];
