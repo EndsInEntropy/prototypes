@@ -375,11 +375,29 @@ const RECIPES = [
     emoji: '🌮',
     source: 'https://www.theleangreenbean.com/homemade-whole-wheat-tortillas/',
     sourceName: 'The Lean Green Bean',
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 30 min · Cook 20 min',
+    servings: 'Makes 8',
+    note: 'Use immediately, or store in an airtight container in the fridge, or freeze.',
+    ingredients: [
+      { heading: '', items: [
+        '2 cups white whole wheat flour',
+        '3 tbsp extra virgin olive oil',
+        '½ tsp salt',
+        '⅔ cup warm water'
+      ]}
+    ],
+    method: [
+      'In a bowl, mix together the flour, oil and salt.',
+      'Slowly add the warm water while stirring until a rough dough comes together. Add a little extra water if needed.',
+      'Turn the dough onto the counter and knead for about 2 minutes.',
+      'Return to the bowl and let rest for 20 minutes.',
+      'Divide the dough into 8 equal balls.',
+      'Roll each ball into a thin circle.',
+      'Heat a pan over medium-high heat and grease lightly.',
+      'Drop one dough circle into the pan and cook until bubbles form, about 1 minute.',
+      'Flip and cook another minute, pressing down with a spatula if needed. Repeat with the remaining dough.'
+    ],
+    status: 'ready'
   },
   {
     id: 'butter-bean-curry',
