@@ -406,11 +406,39 @@ const RECIPES = [
     emoji: '🍛',
     source: 'https://www.bbcgoodfood.com/recipes/butter-bean-curry',
     sourceName: 'BBC Good Food',
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 15 min · Cook 40 min',
+    servings: 'Serves 2 (makes extra for wraps another day)',
+    note: 'Serve half the curry and raita now; cool and chill the rest to use for butter bean curry wraps another day. Curry keeps chilled up to 3 days, raita up to 1 day.',
+    ingredients: [
+      { heading: '', items: [
+        '2 tbsp rapeseed oil',
+        '2 onions (320g), finely chopped',
+        '1 tbsp finely grated ginger',
+        '3 large garlic cloves, finely grated',
+        '1 red chilli, deseeded and sliced',
+        '2 x 400g cans butter beans',
+        '2 tsp vegan bouillon powder',
+        '1 tsp cumin seeds',
+        '2 tbsp medium curry powder',
+        '400g can chopped tomatoes',
+        '1 aubergine (320g), cut into cubes',
+        '15g coriander, chopped',
+        '250g pouch cooked wholegrain rice'
+      ]},
+      { heading: 'For the raita', items: [
+        '2 small bananas, peeled and finely chopped',
+        '½ lime, juiced',
+        '¼ cucumber, finely chopped',
+        '1 small red onion (60g), finely chopped',
+        '1 red chilli, deseeded and sliced'
+      ]}
+    ],
+    method: [
+      'Heat the oil in a non-stick pan over medium heat and fry the onions for 8 minutes until softened. Add the ginger, garlic and chilli and cook a few minutes more. Measure 300ml of the liquid from the cans of butter beans into a jug and mix in the bouillon powder to make a stock (it may look thick or lumpy — it will dissolve in the pan as it cooks).',
+      'Stir the cumin seeds and curry powder into the onions, followed by the tomatoes, beans and aubergine. Add the stock. Bring to the boil, then reduce the heat to medium-low, cover and simmer for 30 minutes until the veg is tender. Stir in half the coriander and remove from the heat.',
+      'For the raita, toss the bananas in the lime juice, then add the cucumber, onion, chilli and remaining coriander. Warm the rice following the pack instructions and serve with half the curry and raita.'
+    ],
+    status: 'ready'
   },
   {
     id: 'flapjacks',
