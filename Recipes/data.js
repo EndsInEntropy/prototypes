@@ -133,16 +133,44 @@ const RECIPES = [
   },
   {
     id: 'black-bean-stew',
-    title: 'Black Bean Stew',
+    title: 'Sweet Potato Black Bean Stew',
     category: 'Mains',
     emoji: '🍲',
     source: 'https://makeitdairyfree.com/vegan-black-bean-stew/',
     sourceName: 'Make It Dairy Free',
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 5 min · Cook 40 min',
+    servings: 'Serves 6',
+    note: 'Slow cooker: add everything and cook on high 2–3 hr or low 4–5 hr, until fragrant and the sweet potatoes are fork tender. Swapping the coconut milk: use a thick non-dairy milk like soy or extra-creamy oat — once the potatoes are tender, whisk 2 tbsp of the liquid with 1–2 tsp cornstarch and stir back in to thicken. Dried beans can replace canned, just cook them first.',
+    ingredients: [
+      { heading: '', items: [
+        '1 tbsp olive oil',
+        '1 medium onion, diced (any colour)',
+        '½ tsp sea salt',
+        '2 cloves garlic',
+        '4 sprigs fresh thyme',
+        '2 x 15.5oz cans black beans, drained and rinsed (880g)',
+        '3 cups sweet potatoes, cubed (400g)',
+        '1½ tbsp smoked paprika',
+        '1½ tsp cumin',
+        '1 tsp chili powder',
+        '½ tsp onion powder',
+        '1 x 13.5oz can full-fat coconut milk (400ml)',
+        '½ cup vegetable stock (110ml)',
+        '2 tbsp sriracha, more or less to taste'
+      ]},
+      { heading: 'Side options', items: [
+        'Cooked brown rice or quinoa',
+        'Mashed potatoes',
+        'Baguette'
+      ]}
+    ],
+    method: [
+      'Heat the oil in a large skillet or pot with high walls over medium heat. Add the onion, sprinkle with the salt, and cook, stirring every few minutes, until translucent and lightly caramelised (6–8 min). Stir in the garlic and thyme and cook 1 minute more.',
+      'Add the black beans, sweet potatoes, smoked paprika, cumin, chili powder and onion powder and stir well. Add the coconut milk, stock and sriracha, scraping up any browned bits from the bottom to incorporate the flavour.',
+      'Without adjusting the heat, bring to a simmer. Cover and cook until the sweet potatoes are fork tender, stirring periodically, about 30–35 minutes.',
+      'Serve warm with fresh herbs sprinkled over, with rice, mashed potatoes or bread on the side.'
+    ],
+    status: 'ready'
   },
   {
     id: 'pita-bread',
