@@ -447,11 +447,27 @@ const RECIPES = [
     emoji: '🍫',
     source: 'https://www.cinnamonandkale.co.uk/wprm_print/almond-butter-flapjacks',
     sourceName: 'Cinnamon & Kale',
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 10 min · Cook 20 min',
+    servings: 'Serves 6 · 10 x 20cm tin',
+    note: 'Chopped almonds are optional — leave out and add an extra 20g oats instead. For vegan, use maple syrup instead of honey. For gluten free, use certified gluten-free oats. A 1lb/450g loaf tin is about the right size; to double the recipe use a 20 x 20cm tin.',
+    ingredients: [
+      { heading: '', items: [
+        '3 tbsp almond butter',
+        '3 tbsp honey',
+        '100g oats (rolled or porridge)',
+        '20g chopped almonds'
+      ]}
+    ],
+    method: [
+      'Preheat the oven to 160°C (140°C fan).',
+      'Line the base of a 10 x 20cm baking tin and lightly grease the sides.',
+      'Mix the almond butter and honey together in a bowl. If it won’t go smooth, warm the bowl over a pan of boiling water.',
+      'Add the oats and chopped almonds and stir well.',
+      'Spoon the mixture into the lined tin and level with the back of the spoon.',
+      'Bake for 20 minutes, turning the tray partway through if needed so the flapjacks brown evenly.',
+      'Remove from the tin when cool enough to handle and cut into slices or squares while still warm.'
+    ],
+    status: 'ready'
   },
   {
     id: 'baguettes',
