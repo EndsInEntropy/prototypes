@@ -12,11 +12,55 @@ const RECIPES = [
     emoji: '🥘',
     source: 'https://plantbasednews.org/wprm_print/chickpea-traybake',
     sourceName: 'Plant Based News',
-    time: '',
-    servings: '',
-    ingredients: [],
-    method: [],
-    status: 'pending'
+    time: 'Prep 20 min · Cook 30 min (plus 1.5–2 hr for the confit)',
+    servings: 'Serves 4',
+    ingredients: [
+      { heading: '', items: [
+        '1 tin chickpeas, drained and rinsed',
+        '500g seasonal vegetables (e.g. sweet potatoes, swede, parsnips)',
+        '1 red onion, thinly sliced',
+        '2 tbsp extra virgin olive oil',
+        'Zest of 1 unwaxed lemon',
+        '1 tsp ground cumin',
+        '1 tsp paprika powder',
+        '½ tsp turmeric powder',
+        '½ tsp cayenne pepper (optional)',
+        'Salt and pepper, to taste',
+        'Tenderstem broccoli, washed and chopped into bite-size pieces',
+        '1 lemon, freshly sliced'
+      ]},
+      { heading: 'For the zesty coriander drizzle', items: [
+        '1 handful fresh coriander, thick stems removed',
+        'Juice of 1 lemon',
+        '3 tbsp extra virgin olive oil',
+        '2 cloves garlic, roasted (from the confit)',
+        'Salt and pepper, to taste'
+      ]},
+      { heading: 'For the tomato confit', items: [
+        '300g cherry tomatoes, washed and halved',
+        '3 cloves garlic',
+        'Extra virgin olive oil',
+        'Fresh thyme',
+        'Salt and pepper, to taste'
+      ]}
+    ],
+    method: [
+      { heading: 'For the tomato confit', steps: [
+        'Preheat the oven to 135°C.',
+        'Toss the halved cherry tomatoes with olive oil, garlic, thyme, salt and pepper.',
+        'Arrange the tomatoes cut-side up in a baking dish, packed close together — the closer they are, the juicier and more concentrated the confit will be. Add enough olive oil for them to sit in.',
+        'Slow-roast for 1.5–2 hours until tender and caramelised.'
+      ]},
+      { heading: 'For the traybake', steps: [
+        'Preheat the oven to 200°C (180°C fan).',
+        'In a large bowl, toss the chickpeas and vegetables (not the broccoli) with olive oil, lemon zest and spices to evenly coat.',
+        'Spread the mix evenly on a baking tray, top with the lemon slices, and roast for 25 minutes.',
+        'Toss the broccoli in the same bowl to pick up the leftover oil, then add it to the tray. Roast a further 5–10 minutes until everything is golden and tender.',
+        'While roasting, blitz the coriander, lemon juice, olive oil, roasted garlic (from the confit) and salt and pepper in a food processor into a vibrant sauce.',
+        'To serve, top the traybake with a few confit tomatoes and drizzle over the coriander sauce.'
+      ]}
+    ],
+    status: 'ready'
   },
   {
     id: 'crispy-tofu',
