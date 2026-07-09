@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f6ecd8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Breadboard">
+<meta name="description" content="Your bread recipe box: sourdough to focaccia, ingredients, method and photos at a glance.">
+<title>The Breadboard · Bread Recipe Box</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ============ HOME ============ -->
+  <section id="view-home" class="view active">
+    <header class="home-header">
+      <div class="brand">
+        <img class="brand-mark" src="icon.svg" alt="">
+        <div class="brand-text">
+          <h1>The Breadboard</h1>
+          <div class="eyebrow">Your bread recipe box</div>
+        </div>
+      </div>
+      <button class="menu-btn" data-action="toggle-menu" aria-label="Menu">⋯</button>
+    </header>
+
+    <div id="menuPanel" class="menu-panel hidden">
+      <button data-action="export-backup">⬇️ Export backup</button>
+      <button data-action="trigger-import">⬆️ Import backup</button>
+      <div class="divider"></div>
+      <button data-action="show-about">🍞 About Breadboard</button>
+    </div>
+    <input type="file" id="importFile" accept="application/json" hidden>
+
+    <div class="search-row">
+      <div class="search-box">
+        <span class="ic">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search recipes, tags, ingredients…" autocomplete="off">
+      </div>
+      <div class="sort-wrap">
+        <button class="sort-btn" data-action="toggle-sort" id="sortBtn">↕ <span id="sortLabel">Newest</span></button>
+        <div id="sortMenu" class="sort-menu hidden">
+          <button data-sort="newest">Newest first</button>
+          <button data-sort="az">A – Z</button>
+          <button data-sort="type">Bread type</button>
+          <button data-sort="quick">Quickest first</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="typeChips" class="chip-row"></div>
+
+    <div id="installBanner"></div>
+
+    <div id="homeList"></div>
+
+    <footer class="hint">Tap a loaf to open it · tap ★ to pin a favourite to the top</footer>
+
+    <button class="fab" data-action="new" aria-label="Add recipe">+</button>
+  </section>
+
+  <!-- ============ DETAIL ============ -->
+  <section id="view-detail" class="view"></section>
+
+  <!-- ============ FORM ============ -->
+  <section id="view-form" class="view"></section>
+
+</div>
+
+<div id="modalRoot"></div>
+<div id="toast" class="toast"></div>
+
+<script src="db.js"></script>
+<script src="seed.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
